@@ -1,0 +1,28 @@
+{
+  "name": "react-isle",
+  "version": "0.9.0",
+  "description": "Floating React components",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "tsc",
+    "prepare" : "npm run build",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uderly/react-isle.git"
+  },
+  "keywords": ["floating", "touch", "gestures", "hammerjs", "hammer", "pan", "pinch"],
+  "author": "Simone Vitale @ Uderly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uderly/react-isle/issues"
+  },
+  "homepage": "https://github.com/uderly/react-isle#readme",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
+}
