@@ -1,8 +1,8 @@
 # react-isle
 
-A javascript library leveraging HammerJS' multi-touch gestures to drag, zoom in/out, minimize and maximize React components (\"isles\").
+A javascript library leveraging HammerJS' multi-touch gestures to drag, zoom in/out, minimize and maximize React components (*isles*).
 
-Let your isles be errant on the screen OR contain them. How do you call a group of isles? Exact: an **archipelago**! Isles in an archipelago can be minimized and stacked!
+Let your isles be free and errant on the screen OR contain and gather them together. How would you call a group of isles? Exact: an **archipelago**! Isles in an archipelago can be minimized and stacked!
 
 ## Installation
 
@@ -13,7 +13,7 @@ npm i react-isle
 ## Usage
 
 ```javascript
-import Isle, { Archipelago } from "./react-isle";
+import Isle, { Archipelago } from "react-isle";
 
 export default function App() {
 	return(

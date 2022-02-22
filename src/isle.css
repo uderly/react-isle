@@ -1,0 +1,76 @@
+.archipelago {
+    position: relative;
+    border: 1px dashed #555;
+    overflow: hidden;
+    width: 700px;
+    height: 500px;
+  }
+  
+  .isle {
+    position: absolute;
+    border: 1pt solid #212121;
+    border-radius: 10px 10px 3px 3px;
+    overflow: hidden;
+  }
+  .isle .isle-content {
+    background-color: #1e1e1e;
+  }
+  .isle .isle-header {
+    width: 100%;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+    background-image: linear-gradient(#282828, #212121);
+    color: white;
+  }
+  .isle .isle-header .isle-header-left {
+    background-color: #00aa00;
+  }
+  .isle .isle-header .isle-header-center {
+    flex-grow: 1;
+  }
+  .isle .isle-header .isle-header-right {
+    display: flex;
+  }
+  .isle .isle-header .isle-header-right > div {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .isle .isle-header svg {
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 18px;
+  }
+  .isle .isle-header svg path {
+    fill: white;
+  }
+  
+  @keyframes hiding-header {
+    from {
+      height: 25px;
+    }
+    to {
+      height: 1px;
+    }
+  }
+  .isle.hiding-frame {
+    border: 0;
+  }
+  .isle.hiding-frame .isle-header {
+    animation: hiding-header 0.05s linear;
+    height: 1px;
+  }
+  .isle.hiding-frame .isle-content {
+    background: transparent;
+  }
+  
+  .isle.no-frame {
+    border: 0;
+  }
+  .isle.no-frame .isle-content {
+    background: transparent;
+  }

@@ -6,16 +6,24 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build" : "tsc",
-    "prepare" : "npm run build",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "build": "tsc",
+    "prepare": "npm run build",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uderly/react-isle.git"
   },
-  "keywords": ["floating", "touch", "gestures", "hammerjs", "hammer", "pan", "pinch"],
+  "keywords": [
+    "floating",
+    "touch",
+    "gestures",
+    "hammerjs",
+    "hammer",
+    "pan",
+    "pinch"
+  ],
   "author": "Simone Vitale @ Uderly",
   "license": "MIT",
   "bugs": {
@@ -23,6 +31,13 @@
   },
   "homepage": "https://github.com/uderly/react-isle#readme",
   "devDependencies": {
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-hammerjs": "^1.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hammerjs": "^1.0.1",
     "typescript": "^4.5.5"
-  }
+  },
+  "dependencies": {}
 }
