@@ -9,7 +9,7 @@ Let your isles be free and errant on the screen OR contain and gather them toget
 ## Installation
 
 ```bash
-npm i react-isle
+npm i react-hammerjs react-isle
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ export default function App() {
     <>
       <Archipelago>
         <Isle className="my-isle" onMaximize={() => alert("Maxi")}>
-          <h1>Isle 1</h1>
+          <img src="https://picsum.photos/512/400" />
         </Isle>
 
         <Isle hideFrame params={{ scale: 0.5, x: 300 }}>
@@ -37,7 +37,7 @@ export default function App() {
       <Isle title="Errant Isle">
         <h1>Errant Isle</h1>
       </Isle>
-	</>);
+    </>);
 }
 ```
 

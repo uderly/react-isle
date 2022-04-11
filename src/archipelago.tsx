@@ -25,7 +25,7 @@ export class Archipelago extends Component<ArchipelagoProps> {
 
         for(let i=(index+1); index > -1 && i<this.minimizedIsles.length; i++) {
             const pos = [ ...this.minimizedIsles[i].state.position ];
-            pos[0] -= r.width;
+            pos[0] += (this.props.stackHorizontalOrientation === "right-left") ? r.width : -r.width;
 
             this.minimizedIsles[i].setPosition(pos);
         }
@@ -45,6 +45,10 @@ export class Archipelago extends Component<ArchipelagoProps> {
         };
     }
 
+    getBoundingClientRect = () => {
+        return (!this.ref || !this.ref.current) ? null : this.ref.current.getBoundingClientRect();
+    }
+
     getHighestZIndex() {
         let zIndex = 0;
 
@@ -55,10 +59,12 @@ export class Archipelago extends Component<ArchipelagoProps> {
         return zIndex;
     }
 
-    render() {
-        const { className } = this.props;
+    ref = React.createRef<HTMLDivElement>();
 
-        return <div className={"archipelago " + (className ? className : "")}>
+    render() {
+        const { className, style } = this.props;
+
+        return <div ref={this.ref} className={"archipelago " + (className ? className : "")} style={style ? style : undefined}>
             { Children.map(this.props.children, 
                 (isle:any, i:number) => { return React.cloneElement(isle, { archipelago: this, k: (i+1), zIndex: (i+1) }); }) }
         </div>

@@ -3,6 +3,8 @@ import { Archipelago } from "./archipelago";
 
 export interface ArchipelagoProps {
     className?: string;
+    style?: React.CSSProperties|undefined;
+    stackHorizontalOrientation?: string|"left-right";
 };
 
 export interface IsleParams {
@@ -32,6 +34,7 @@ export interface IsleProps {
     k?: number;
     params?: IsleParams;
     zIndex?: number;
+    minimized?: boolean|false;
 };
 
 export interface IsleState {

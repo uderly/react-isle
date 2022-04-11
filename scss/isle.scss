@@ -1,0 +1,106 @@
+$color1: #282828;
+$color2: #212121;
+$color3: #1e1e1e;
+
+$normalBorderRadius: 10px;
+$smallBorderRadius: 3px;
+$headerHeight: 25px;
+
+.archipelago {
+    position: relative;
+    border: 1px dashed #555;
+    overflow: hidden;
+    width: 700px;
+    height: 500px;
+}
+
+.isle {
+    position: absolute;
+    border: 1px inset $color2;
+    border-radius: $normalBorderRadius $normalBorderRadius $smallBorderRadius $smallBorderRadius;
+    background-color: $color3;
+    overflow: hidden;
+
+    .isle-content {
+        padding-top: $headerHeight;
+        height: 100%;
+        background-color: $color3;
+
+        * {
+            pointer-events: none
+        }
+    }
+ 
+    .isle-header {
+        position: absolute;
+        width: 100%;
+        height: $headerHeight;
+        z-index: 1;
+        padding: 0;
+        display: flex;
+        overflow: hidden;
+        background-image: linear-gradient($color1, $color2);
+        color: white;
+
+        // .isle-header-left {
+        //     background-color: #00aa00;
+        // }
+
+        .isle-header-center {
+            flex-grow: 1;
+            padding-left: 7px;
+        }
+
+        .isle-header-right {
+            display: flex;
+
+            > div {
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+
+        svg {
+            path {
+                fill: white;
+            }
+
+            max-height: 100%;
+            margin: 0;
+            padding: 0;
+            height: 18px;
+        }
+    }
+}
+
+@keyframes hiding-header {
+    from {
+        height: $headerHeight;
+    }
+    to {
+        height: 1px;
+    }
+}
+
+.isle.hiding-frame {
+    border: 0;
+    
+    .isle-header {
+        animation: hiding-header 0.05s linear;
+        height: 1px;
+    }
+
+    .isle-content {
+        background: transparent;
+    }
+}
+
+.isle.no-frame {
+    border: 0;
+    
+    .isle-content {
+        background: transparent;
+    }
+}

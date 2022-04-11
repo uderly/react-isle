@@ -85,7 +85,12 @@ export default class Isle extends Component<IsleProps, IsleState> {
         this.node.addEventListener("wheel", this.onWheel);
 
         window.addEventListener("resize", this.onResize.bind(this));
+
+        if(this.props.minimized)
+            this.minimize();
     }
+
+    onElementDragStart = (e:Event) => { console.log(e); e.preventDefault(); }
 
     setPosition = (pos:Array<number>) => {
         this.setState({
@@ -96,6 +101,11 @@ export default class Isle extends Component<IsleProps, IsleState> {
     componentWillUnmount() {
         this.node.removeEventListener("wheel", this.onWheel);
         window.removeEventListener("resize", this.onResize.bind(this));
+        
+        const content = document.querySelector('.isle-content *');
+        
+        if(content)
+            content.removeEventListener('dragstart', this.onElementDragStart);
     }
 
     onResize() {
@@ -226,7 +236,7 @@ export default class Isle extends Component<IsleProps, IsleState> {
         return r;
     }
 
-    onMinimized = (e:any) => {
+    onMinimized = (e:any = null) => {
         this.setState({
             viewMode: IsleViewModesEnum.Minimized
         });
@@ -237,7 +247,7 @@ export default class Isle extends Component<IsleProps, IsleState> {
 
     onAnimationEnd:AnimationEventHandler<HTMLDivElement> | undefined = undefined;
 
-    minimize = (e:any) => {
+    minimize = (e:any = null) => {
         const { archipelago, k } = this.props;
 
         this.setState({
@@ -258,11 +268,21 @@ export default class Isle extends Component<IsleProps, IsleState> {
                 right: 0
             } : archipelago.getStackBoundingRect();
 
-            const {iconHeight} = this.params;
-
+            const { iconHeight } = this.params;
             const minimizedScale = (iconHeight as number) / r.height;
-            const moveTo = [(stackRect.left + stackRect.width) + (r.width * minimizedScale / 2 - r.width / 2), stackRect.top + ((iconHeight as number) / 2 - r.height / 2)];
-    
+
+            const moveTo = [
+                (stackRect.left + stackRect.width) + (r.width * minimizedScale / 2 - r.width / 2), 
+                stackRect.top + ((iconHeight as number) / 2 - r.height / 2)];
+
+            // Support right to left orientation
+            if(archipelago && archipelago.props.stackHorizontalOrientation === "right-left") {
+                const archipelagoBoundingRect = archipelago.getBoundingClientRect();
+
+                if(archipelagoBoundingRect)
+                   moveTo[0] = (stackRect.left + archipelagoBoundingRect.width - stackRect.width) - (r.width * minimizedScale / 2) - (r.width / 2);
+            }
+
             if(archipelago && k)
                 archipelago.minimizeIsle(this, minimizedScale);
 

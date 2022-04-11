@@ -1,6 +1,6 @@
 {
   "name": "react-isle",
-  "version": "0.9.5",
+  "version": "0.9.11",
   "description": "Floating React components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && copy \"./README.md\" \"lib/README.md\"",
     "prepare": "npm run build",
+    "format": "npm run format",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
