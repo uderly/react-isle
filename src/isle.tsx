@@ -255,7 +255,10 @@ export default class Isle extends Component<IsleProps, IsleState> {
            rotation: 0
         });
 
-        this.onAnimationEnd = () => {
+        this.onAnimationEnd = (event) => {
+            if((event.target as HTMLDivElement).dataset["tag"] !== "ISLE-HEADER")
+                return;
+
             // Save current state
             this.takeStateShot();
 
@@ -367,7 +370,7 @@ export default class Isle extends Component<IsleProps, IsleState> {
                     className={`isle ${valString(className)} ${valBoolean(hideFrame, "no-frame")} ${valBoolean(hidingFrame, "hiding-frame")} 
                         ${valBoolean(!disableAutoHideFrame, "auto-hide-frame")} ${(viewMode === IsleViewModesEnum.Minimized) && "minimized"}`}>
                     { (viewMode === IsleViewModesEnum.Normal && !hideFrame) &&
-                        <div className="isle-header">
+                        <div className="isle-header" data-tag="ISLE-HEADER">
                             <div className="isle-header-left">
                             </div>
 
